@@ -1,0 +1,34 @@
+@import "./src/assets/styles/common.scss";
+
+.customer-name {
+    text-decoration: underline;
+    text-decoration-color:white;
+    cursor: pointer;
+}
+.customer-name:hover {
+    color: white;
+}
+
+.row-detail {
+    
+    @extend .flex-space-between;
+    color: white;
+    align-items: flex-start;
+    width: 100%;
+    p {
+        margin: 5px 0;
+    }
+    p:first-child {
+        width: 200px;
+        font-weight: bold;
+    }
+    p:nth-child(2) {
+        width: 100%;
+    }
+    img {
+        max-width: 350px;
+        height: 200px;
+        border-radius: 4px;
+        width: 100%;
+    }
+}

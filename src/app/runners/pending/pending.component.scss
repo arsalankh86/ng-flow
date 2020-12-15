@@ -1,0 +1,28 @@
+@import "./src/assets/styles/common.scss";
+
+::ng-deep .nb-theme-default ng2-smart-table tbody tr:nth-child(2n) {
+    background-color: white;
+}
+// ::ng-deep .ng2-smart-th {
+//     padding-right: 10px !important;
+//     padding-left: 10px !important; 
+// }
+
+::ng-deep .nb-theme-default .modal-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host /deep/ tr.pending {
+    background-color: white !important;
+}
+:host /deep/ tr.ready2pickup {
+    background-color: #f5f7fc !important;
+}
+.btn-custom {
+    padding: 0 4px !important;
+    font-size: 2rem !important;
+}
+// ::ng-deep .nb-theme-default a {
+//     font-size: 15px !important;
+// }

@@ -1,0 +1,98 @@
+@import "./src/assets/styles/common.scss";
+.mat-accordion .mat-header-row {
+    padding-left: 5px;
+    padding-right: 15px;
+    border-bottom: none;
+  }
+  
+  .mat-expansion-panel-header.mat-row {
+    border-bottom: none;
+  }
+  .mat-expansion-custom {
+    box-shadow: none !important; 
+    border-bottom: 1px solid #eaeef2;
+    border-radius: 4px;
+  }
+  
+  //copied from https://github.com/angular/material2/blob/master/src/lib/table/table.scss
+  $mat-header-row-height: 56px;
+  $mat-row-height: 58px;
+  $mat-row-horizontal-padding: 5px;
+  
+  .mat-table {
+    display: block;
+  }
+  
+  .mat-header-row {
+    min-height: $mat-header-row-height;
+    border-bottom: 1px solid #edf0f4 !important;
+    border-top: 1px solid #eef0f4;
+  }
+  
+  .mat-row {
+    min-height: $mat-row-height;
+    align-items: center;
+  }
+  
+  .mat-row, .mat-header-row {
+    display: flex;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: center;
+    padding: 0 $mat-row-horizontal-padding;
+    box-sizing: border-box;
+  
+    // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+    // element that will stretch the row the correct height. See:
+    // https://connect.microsoft.com/IE/feedback/details/802625
+    &::after {
+      display: inline-block;
+      min-height: inherit;
+      content: '';
+    }
+  }
+
+  .mat-cell, .mat-header-cell {
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 15px;
+  }
+  
+  ::ng-deep .nb-theme-default .modal-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .receipt-wrapper {
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .receipt-checkout-items {
+      @extend .flex-space-between;
+      border-bottom: 1px solid #e9ecef;
+      padding: 7px 0;
+  }
+  
+  .receipt-checkout-items p {
+      font-size: 14px;
+      margin: 0;
+  }
+  
+  .receipt-checkout-items span {
+      margin-right: 5px;
+  }
+  
+  .checkout-total {
+    font-size: 13px;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid grey;
+  }
+  .checkout-total p {
+    margin: 0;
+  }
+  
+  

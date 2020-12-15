@@ -1,0 +1,131 @@
+@import "./src/assets/styles/common.scss";
+
+.modal-header {
+  display: flex;
+  align-items: center;
+}
+.modal-footer {
+  border-top: none;
+}
+
+.modal-header i {
+  font-size: 30px;
+  color: #2a2a2a;
+  font-weight: bold;
+  margin-right: -7px;
+}
+.fixed {
+  height: auto !important;
+  padding: 7px !important;
+}
+.mat-accordion .mat-header-row {
+    padding-left: 1.5rem;
+    padding-right: 2rem;
+    border-bottom: none;
+}
+
+.mat-expansion-panel-header.mat-row {
+  border-bottom: none;
+}
+
+//copied from https://github.com/angular/material2/blob/master/src/lib/table/table.scss
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+
+.mat-table {
+  display: block;
+}
+
+.mat-header-row {
+  min-height: $mat-header-row-height;
+}
+
+.mat-row {
+  min-height: $mat-row-height;
+}
+
+.mat-row, .mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  padding: 0 $mat-row-horizontal-padding;
+  box-sizing: border-box;
+
+  // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+  // element that will stretch the row the correct height. See:
+  // https://connect.microsoft.com/IE/feedback/details/802625
+  &::after {
+    display: inline-block;
+    min-height: inherit;
+    content: '';
+  }
+}
+
+.mat-cell, .mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  border: 1px solid #eef0f4;
+}
+
+.runner-chooser {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eaeef2;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+.row-detail {
+  @extend .flex-space-between;
+}
+.row-detail p {
+  margin: 5px 0;
+}
+.row-detail p:first-child {
+  width: 25%;
+  font-weight: bold;
+}
+.row-detail p:nth-child(2) {
+  width: 75%;
+}
+
+.receipt-wrapper {
+  padding: 10px;
+  border: 1px solid #d6d2d2;
+  background-color: white;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.receipt-checkout-items {
+    @extend .flex-space-between;
+    border-bottom: 1px solid #e9ecef;
+    padding: 7px 0;
+}
+
+.receipt-checkout-items p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.receipt-checkout-items span {
+    margin-right: 5px;
+}
+
+.checkout-total {
+  font-size: 13px;
+  padding-top: 15px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid grey;
+}
+.checkout-total p {
+  margin: 0;
+}

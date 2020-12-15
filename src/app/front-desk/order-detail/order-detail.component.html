@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <span>Order Detail</span>
+    <div>
+        <button mat-raised-button color="warn" *ngIf="order.status >= 1 && order.status <= 4" (click)="onCancelAuthorization()"> Cancel Order</button>
+        <button class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>
+<div class="modal-body">
+    <mat-paginator #paginator [length]="totalRows$ | async" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+    <mat-accordion displayMode="flat" multi class="mat-table">
+        <section matSort class="mat-header-row">
+            <span class="mat-header-cell" mat-sort-header="name">Name</span>
+            <span class="mat-header-cell" mat-sort-header="id">Quantity</span>
+            <span class="mat-header-cell" mat-sort-header="price">Price per item</span>
+            <span class="mat-header-cell" mat-sort-header="tax">Tax per item</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let item of displayedRows$ | async">
+            <mat-expansion-panel-header class="mat-row">
+                <span class="mat-cell">{{item.name}}</span>
+                <span class="mat-cell">{{item.amounts}}</span>
+                <span class="mat-cell">{{order.currency_symbol}}{{item.price.toFixed(2)}}</span>
+                <span class="mat-cell">{{order.currency_symbol}}{{item.tax.toFixed(2)}}</span>
+            </mat-expansion-panel-header>
+            {{item.description}}
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="modal-footer" style="flex-direction: column;">
+    <p *ngIf="order.status == 9 || order.status == 10" class="alert-message">
+        <ngb-alert type="info" [dismissible]="false">{{ alertMessage }}</ngb-alert>
+    </p>
+    <div *ngIf="order.status == 1 || order.status == 9 || order.status == 10" style="width: 100%; margin: 10px 20px;">
+        <p><span>Assigned to:</span> {{selectedRunnerName}}</p>
+        <div class="runner-chooser" *ngIf="order.is_order_accepted_by_runner !== 'Accepted'">
+            <mat-select [(ngModel)]="selectedRunnerId" [placeholder]="runnerPlaceholder" (ngModelChange)="onSelectRunner($event)">
+                <mat-option [value]="runner.id" *ngFor="let runner of runners; let i = index">{{runner.name}} | {{runner.pending_orders}} | Sections: {{runner.sections}}</mat-option>
+            </mat-select>
+        </div>
+        <button class="btn btn-md btn-success btn-block" (click)="onAssignRunner()" *ngIf="order.status == 1">SELECT RUNNER</button>
+        <button class="btn btn-md btn-success btn-block" (click)="onAssignRunner()" *ngIf="order.status == 9">CHANGE RUNNER</button>
+    </div>
+    <button *ngIf="order.status == 2" class="btn btn-md btn-success btn-block" (click)="onClickReadyToPickup()">READY FOR PICKUP</button>
+    <button *ngIf="order.status == 3 || order.status == 4" class="btn btn-md btn-success btn-block" (click)="onClickComplete()">COMPLETE ORDER</button>
+</div>
